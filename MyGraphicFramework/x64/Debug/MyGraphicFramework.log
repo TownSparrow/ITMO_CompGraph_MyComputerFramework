@@ -1,0 +1,5 @@
+﻿  Game.cpp
+D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\MyGraphicFramework\TriangleComponent.h(21,18): warning C4553: '==': result of expression not used; did you intend '='?
+  (compiling source file 'Game.cpp')
+  
+  MyGraphicFramework.vcxproj -> D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\x64\Debug\MyGraphicFramework.exe
