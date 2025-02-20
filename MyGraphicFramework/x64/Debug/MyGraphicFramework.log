@@ -1,5 +1,22 @@
-﻿  Game.cpp
-D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\MyGraphicFramework\TriangleComponent.h(21,18): warning C4553: '==': result of expression not used; did you intend '='?
+﻿  compilation object save succeeded; see D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\ITMO_CompGraph_MyComputerFramework\x64\Debug\MainShader.cso
+  Delegates.cpp
+  DisplayWin32.cpp
+  Game.cpp
+D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\ITMO_CompGraph_MyComputerFramework\MyGraphicFramework\TriangleComponent.h(21,18): warning C4553: '==': result of expression not used; did you intend '='?
   (compiling source file 'Game.cpp')
   
-  MyGraphicFramework.vcxproj -> D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\x64\Debug\MyGraphicFramework.exe
+  InputDevice.cpp
+D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\ITMO_CompGraph_MyComputerFramework\MyGraphicFramework\InputDevice.cpp(73,70): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\ITMO_CompGraph_MyComputerFramework\MyGraphicFramework\InputDevice.cpp(73,61): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\ITMO_CompGraph_MyComputerFramework\MyGraphicFramework\InputDevice.cpp(74,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\ITMO_CompGraph_MyComputerFramework\MyGraphicFramework\InputDevice.cpp(74,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+  TriangleComponent.cpp
+D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\ITMO_CompGraph_MyComputerFramework\MyGraphicFramework\TriangleComponent.h(21,18): warning C4553: '==': result of expression not used; did you intend '='?
+  (compiling source file 'TriangleComponent.cpp')
+  
+D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\ITMO_CompGraph_MyComputerFramework\MyGraphicFramework\TriangleComponent.cpp(95,54): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\ITMO_CompGraph_MyComputerFramework\MyGraphicFramework\TriangleComponent.cpp(114,39): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\ITMO_CompGraph_MyComputerFramework\MyGraphicFramework\TriangleComponent.cpp(161,45): warning C4267: 'argument': conversion from 'size_t' to 'UINT', possible loss of data
+  Generating Code...
+  MyGraphicFramework.vcxproj -> D:\Study\ITMO\2\Компьютерная графика реального времени\MyGraphicFramework\ITMO_CompGraph_MyComputerFramework\x64\Debug\MyGraphicFramework.exe
