@@ -101,7 +101,12 @@ void Game::Initialize(
   }
   
   // --- OMG, POINTS!!! --- //
+  // default points and indexes
   std::vector<DirectX::XMFLOAT4> points = {
+      DirectX::XMFLOAT4(0.5f,  0.5f, 0.5f, 1.0f), DirectX::XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f),
+      DirectX::XMFLOAT4(0.5f, -0.5f, 0.5f, 1.0f), DirectX::XMFLOAT4(0.0f, 0.0f, 1.0f, 1.0f),
+      DirectX::XMFLOAT4(-0.5f, -0.5f, 0.5f, 1.0f), DirectX::XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f),
+      DirectX::XMFLOAT4(-0.5f,  0.5f, 0.5f, 1.0f), DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f),
       DirectX::XMFLOAT4(0.5f,  0.5f, 0.5f, 1.0f), DirectX::XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f),
       DirectX::XMFLOAT4(0.5f, -0.5f, 0.5f, 1.0f), DirectX::XMFLOAT4(0.0f, 0.0f, 1.0f, 1.0f),
       DirectX::XMFLOAT4(-0.5f, -0.5f, 0.5f, 1.0f), DirectX::XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f),
@@ -110,6 +115,25 @@ void Game::Initialize(
   std::vector<int> indexes = { 0,1,2, 0,2,3 };
   std::vector<UINT> strides = { sizeof(DirectX::XMFLOAT4) * 2 };
   std::vector<UINT> offsets = { 0 };
+
+  /*
+  // new points and indexes
+  std::vector<DirectX::XMFLOAT4> pointsNew = {
+      //0
+      DirectX::XMFLOAT4(0.0f, 0.0f, 0.0f, 2.0f), DirectX::XMFLOAT4(0.0f, 1.0f, 1.0f, 1.0f),
+      //1
+      DirectX::XMFLOAT4(-0.175f, 0.1f, 1.0f, 2.0f), DirectX::XMFLOAT4(0.0f, 1.0f, 1.0f, 1.0f),
+      //2
+      DirectX::XMFLOAT4(0.175f, 0.1f, 1.0f, 2.0f), DirectX::XMFLOAT4(0.0f, 1.0f, 1.0f, 1.0f),
+      //3
+      DirectX::XMFLOAT4(0, 0.2f, 1.0f, 2.0f), DirectX::XMFLOAT4(0.0f, 1.0f, 1.0f, 1.0f),
+      //4
+      DirectX::XMFLOAT4(-0.1f, -0.1f, 1.0f, 2.0f), DirectX::XMFLOAT4(0.0f, 1.0f, 1.0f, 1.0f),
+      //5
+      DirectX::XMFLOAT4(0.1f, -0.1f, 1.0f, 2.0f), DirectX::XMFLOAT4(0.0f, 1.0f, 1.0f, 1.0f)
+  };
+  std::vector<int> indexesNew = { 0,1,2, 0,3,4, 0,3,5 };    
+  */
 
   TriangleComponent* triangleX2 = new TriangleComponent(this);
   triangleX2->Initialize(
@@ -120,6 +144,19 @@ void Game::Initialize(
     offsets
   );
   components.push_back(triangleX2);
+
+  /*
+  // trying to draw more
+  TriangleComponent* triangleNew = new TriangleComponent(this);
+  triangleNew->Initialize(
+      L"./Shaders/MainShader.hlsl",
+      pointsNew,
+      indexesNew,
+      strides,
+      offsets
+  );
+  components.push_back(triangleNew);
+  */
 
   PrevTime = std::chrono::steady_clock::now();
 }
@@ -144,7 +181,10 @@ void Game::CreateBackBuffer() {
 
 void Game::PrepareFrame() {
   context->ClearState();
-  D3D11_VIEWPORT vp;
+  
+  // VIEWPORT
+  // default
+  D3D11_VIEWPORT vp = {};
   vp.Width = static_cast<float>(screenWidth);
   vp.Height = static_cast<float>(screenHeight);
   vp.TopLeftX = 0;
