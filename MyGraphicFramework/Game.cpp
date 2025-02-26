@@ -116,6 +116,16 @@ void Game::Initialize(
   std::vector<UINT> strides = { sizeof(DirectX::XMFLOAT4) * 2 };
   std::vector<UINT> offsets = { 0 };
 
+  TriangleComponent* triangleX2 = new TriangleComponent(this);
+  triangleX2->Initialize(
+    L"./Shaders/MainShader.hlsl",
+    points,
+    indexes,
+    strides,
+    offsets
+  );
+  components.push_back(triangleX2);
+
   /*
   // new points and indexes
   std::vector<DirectX::XMFLOAT4> pointsNew = {
@@ -133,19 +143,8 @@ void Game::Initialize(
       DirectX::XMFLOAT4(0.1f, -0.1f, 1.0f, 2.0f), DirectX::XMFLOAT4(0.0f, 1.0f, 1.0f, 1.0f)
   };
   std::vector<int> indexesNew = { 0,1,2, 0,3,4, 0,3,5 };    
-  */
+  
 
-  TriangleComponent* triangleX2 = new TriangleComponent(this);
-  triangleX2->Initialize(
-    L"./Shaders/MainShader.hlsl",
-    points,
-    indexes,
-    strides,
-    offsets
-  );
-  components.push_back(triangleX2);
-
-  /*
   // trying to draw more
   TriangleComponent* triangleNew = new TriangleComponent(this);
   triangleNew->Initialize(
@@ -179,19 +178,40 @@ void Game::CreateBackBuffer() {
   }
 }
 
+// VIEWPORT BASE
+void Game::PrepareViewport(
+  float Width,
+  float Height,
+  float TopLeftX,
+  float TopLeftY,
+  float MinDepth,
+  float MaxDepth
+) {
+
+  D3D11_VIEWPORT vp = {};
+  vp.Width = Width;
+  vp.Height = Height;
+  vp.TopLeftX = TopLeftX;
+  vp.TopLeftY = TopLeftY;
+  vp.MinDepth = MinDepth;
+  vp.MaxDepth = MaxDepth;
+
+  context->RSSetViewports(1, &vp);
+}
+
 void Game::PrepareFrame() {
   context->ClearState();
   
   // VIEWPORT
-  // default
-  D3D11_VIEWPORT vp = {};
-  vp.Width = static_cast<float>(screenWidth);
-  vp.Height = static_cast<float>(screenHeight);
-  vp.TopLeftX = 0;
-  vp.TopLeftY = 0;
-  vp.MinDepth = 0.0f;
-  vp.MaxDepth = 1.0f;
-  context->RSSetViewports(1, &vp);
+  // default (single)
+  PrepareViewport(
+    static_cast<float>(screenWidth),
+    static_cast<float>(screenHeight),
+    0,
+    0,
+    0.0f,
+    1.0f
+  );
 }
 
 void Game::Draw() {
@@ -201,11 +221,41 @@ void Game::Draw() {
   float color[] = { totalTime, 0.1f, 0.1f, 1.0f };
 
   context->ClearRenderTargetView(renderView, color);
-  
-  for (auto comp : components)
-  {
+
+  for (auto comp : components) {
     comp->Draw();
   }
+
+  /*
+  // modification: doubled viewport
+  // left
+  PrepareViewport(
+    static_cast<float>(screenWidth) * 0.25f,
+    static_cast<float>(screenHeight) * 0.25f,
+    static_cast<float>(screenWidth) * 0.15f,
+    static_cast<float>(screenHeight) * 0.35f,
+    0.0f,
+    1.0f
+  );
+
+  for (auto comp : components) {
+    comp->Draw();
+  }
+
+  // right
+  PrepareViewport(
+    static_cast<float>(screenWidth) * 0.25f,
+    static_cast<float>(screenHeight) * 0.25f,
+    static_cast<float>(screenWidth) * 0.60f,
+    static_cast<float>(screenHeight) * 0.35f,
+    0.0f,
+    1.0f
+  );
+
+  for (auto comp : components) {
+    comp->Draw();
+  }
+  */
 
   context->OMSetRenderTargets(0, nullptr, nullptr);
   swapChain->Present(1, 0);

@@ -52,6 +52,14 @@ public:
   void CreateBackBuffer();
   void Update();
   void PrepareFrame();
+  void PrepareViewport(
+    float Width,
+    float Height,
+    float TopLeftX,
+    float TopLeftY,
+    float MinDepth,
+    float MaxDepth
+  );
   void Draw();
   void MessageHandler();
   void EndFrame();

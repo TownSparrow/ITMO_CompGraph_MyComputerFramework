@@ -21,6 +21,7 @@ PS_IN VSMain(VS_IN input)
 float4 PSMain(PS_IN input) : SV_Target
 {
   float4 col = input.col;
+
 #ifdef TEST
     if (input.pos.x > 400)
         col = float4(0.0f, 1.0f, 0.0f, 1.0f);
