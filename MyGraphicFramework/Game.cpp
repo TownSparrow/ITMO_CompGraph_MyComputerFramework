@@ -226,36 +226,34 @@ void Game::Draw() {
     comp->Draw();
   }
 
-  /*
-  // modification: doubled viewport
-  // left
-  PrepareViewport(
-    static_cast<float>(screenWidth) * 0.25f,
-    static_cast<float>(screenHeight) * 0.25f,
-    static_cast<float>(screenWidth) * 0.15f,
-    static_cast<float>(screenHeight) * 0.35f,
-    0.0f,
-    1.0f
-  );
+  //// modification: doubled viewport
+  //// left
+  //PrepareViewport(
+  //  static_cast<float>(screenWidth) * 0.25f,
+  //  static_cast<float>(screenHeight) * 0.25f,
+  //  static_cast<float>(screenWidth) * 0.15f,
+  //  static_cast<float>(screenHeight) * 0.35f,
+  //  0.0f,
+  //  1.0f
+  //);
 
-  for (auto comp : components) {
-    comp->Draw();
-  }
+  //for (auto comp : components) {
+  //  comp->Draw();
+  //}
 
-  // right
-  PrepareViewport(
-    static_cast<float>(screenWidth) * 0.25f,
-    static_cast<float>(screenHeight) * 0.25f,
-    static_cast<float>(screenWidth) * 0.60f,
-    static_cast<float>(screenHeight) * 0.35f,
-    0.0f,
-    1.0f
-  );
+  //// right
+  //PrepareViewport(
+  //  static_cast<float>(screenWidth) * 0.25f,
+  //  static_cast<float>(screenHeight) * 0.25f,
+  //  static_cast<float>(screenWidth) * 0.60f,
+  //  static_cast<float>(screenHeight) * 0.35f,
+  //  0.0f,
+  //  1.0f
+  //);
 
-  for (auto comp : components) {
-    comp->Draw();
-  }
-  */
+  //for (auto comp : components) {
+  //  comp->Draw();
+  //}
 
   context->OMSetRenderTargets(0, nullptr, nullptr);
   swapChain->Present(1, 0);
